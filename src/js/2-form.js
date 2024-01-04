@@ -14,7 +14,7 @@ form.addEventListener('submit', event => {
     console.log(JSON.parse(localStorage.getItem(feedback)));
     form.reset();
     localStorage.removeItem(feedback);
-    savedData = '';
+    savedData = {};
   }
 });
 
