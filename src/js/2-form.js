@@ -19,7 +19,6 @@ form.addEventListener('submit', event => {
 });
 
 form.addEventListener('input', event => {
-  event.preventDefault();
   localStorage.setItem(
     feedback,
     JSON.stringify({
