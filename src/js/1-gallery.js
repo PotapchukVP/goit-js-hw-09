@@ -1,6 +1,6 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery-wrapper');
 let instance;
 
 const images = [
@@ -69,15 +69,14 @@ const images = [
   },
 ];
 
-function createGalery() {
+function createGallery() {
   let markup = '';
-  images.forEach(image => {
-    markup += `<li class="gallery-item">
+  images.map(image => {
+    markup += `<li class="gallery">
    <a class="gallery-link" href="${image.original}">
      <img
        class="gallery-image"
        src="${image.preview}"
-       data-source="${image.original}"
        alt="${image.description}">
    </a>
  </li>`;
@@ -86,10 +85,10 @@ function createGalery() {
   gallery.innerHTML = markup;
 }
 
-createGalery();
+createGallery();
 
 if (!instance) {
-  instance = new SimpleLightbox('.gallery-item a', {
+  instance = new SimpleLightbox('.gallery a', {
     close: true,
     captions: true,
     captionsData: 'alt',
