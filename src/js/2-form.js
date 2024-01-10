@@ -1,17 +1,15 @@
 const form = document.querySelector('.feedback-form');
-let savedData = {};
+let savedData;
 const feedback = 'feedback-form-state';
 
 form.addEventListener('submit', event => {
-  event.preventDefault();
   if (
-    !event.target.elements.email.value ||
-    !event.target.elements.message.value
+    !event.target.elements.email.value.trim() ||
+    !event.target.elements.message.value.trim()
   ) {
     console.error('Please complete all fields before submitting');
     return;
   } else {
-    console.log(JSON.parse(localStorage.getItem(feedback)));
     form.reset();
     localStorage.removeItem(feedback);
     savedData = {};
@@ -22,8 +20,8 @@ form.addEventListener('input', event => {
   localStorage.setItem(
     feedback,
     JSON.stringify({
-      email: form.elements.email.value,
-      message: form.elements.message.value,
+      email: form.elements.email.value.trim(),
+      message: form.elements.message.value.trim(),
     })
   );
 });

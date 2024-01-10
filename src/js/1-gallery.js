@@ -1,7 +1,6 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = document.querySelector('.gallery-wrapper');
-let instance;
 
 const images = [
   {
@@ -87,11 +86,9 @@ function createGallery() {
 
 createGallery();
 
-if (!instance) {
-  instance = new SimpleLightbox('.gallery a', {
-    close: true,
-    captions: true,
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-}
+const lightbox = new SimpleLightbox('.gallery a', {
+  close: true,
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+});
