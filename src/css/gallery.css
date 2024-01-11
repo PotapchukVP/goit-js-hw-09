@@ -27,12 +27,12 @@ ol {
   gap: 24px;
 }
 
-.gallery {
+.gallery-item {
   flex: calc(100% / 3 - 24px);
   transition: transform 0.2s ease-in-out;
 }
 
-.gallery:hover {
+.gallery-item:hover {
   transform: scale(1.05);
 }
 

@@ -71,7 +71,7 @@ const images = [
 function createGallery() {
   let markup = '';
   images.map(image => {
-    markup += `<li class="gallery">
+    markup += `<li class="gallery-item">
    <a class="gallery-link" href="${image.original}">
      <img
        class="gallery-image"
@@ -86,7 +86,7 @@ function createGallery() {
 
 createGallery();
 
-const lightbox = new SimpleLightbox('.gallery a', {
+const lightbox = new SimpleLightbox('.gallery-item a', {
   close: true,
   captions: true,
   captionsData: 'alt',

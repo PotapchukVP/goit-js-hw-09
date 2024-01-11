@@ -1,8 +1,8 @@
 const form = document.querySelector('.feedback-form');
-let savedData;
 const feedback = 'feedback-form-state';
 
 form.addEventListener('submit', event => {
+  event.preventDefault(); // prevent default behavior. Allows show console.log event
   if (
     !event.target.elements.email.value.trim() ||
     !event.target.elements.message.value.trim()
@@ -10,9 +10,9 @@ form.addEventListener('submit', event => {
     console.error('Please complete all fields before submitting');
     return;
   } else {
+    console.log(JSON.parse(localStorage.getItem(feedback)));
     form.reset();
     localStorage.removeItem(feedback);
-    savedData = {};
   }
 });
 
@@ -26,14 +26,13 @@ form.addEventListener('input', event => {
   );
 });
 
-window.addEventListener('load', function (event) {
-  event.preventDefault();
-  savedData = JSON.parse(localStorage.getItem(feedback));
+window.addEventListener('load', () => {
+  const savedData = JSON.parse(localStorage.getItem(feedback));
   if (savedData) {
     form.elements.email.value = savedData.email;
     form.elements.message.value = savedData.message;
-    console.log('Data loaded from localStorage');
+    // console.log('Data loaded from localStorage');
   } else {
-    console.log('Nothing saved in localStorage');
+    // console.log('Nothing saved in localStorage');
   }
 });
